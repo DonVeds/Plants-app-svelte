@@ -14,12 +14,19 @@ function handlerBackNavigation(event){
 
 <style>
 
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
 </style>
 
 <svelte:window on:popstate={handlerBackNavigation} />
 
-<RouterLink page={{path: '/home', name: 'Home'}} />
+<div class="app">
+  <div id="pageContent"><!-- Page component updates here --><svelte:component this={router[$curRoute]} /></div>
 
-<RouterLink page={{path: '/profile', name: 'Profle'}} />
+  <RouterLink page={{path: '/home', name: 'Home'}} />
 
-<div id="pageContent"><!-- Page component updates here --><svelte:component this={router[$curRoute]} /></div>
+  <RouterLink page={{path: '/profile', name: 'Profle'}} />
+</div>
